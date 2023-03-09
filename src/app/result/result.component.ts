@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import  {Translation} from '../models'
 
 @Component({
   selector: 'app-result',
@@ -7,4 +8,10 @@ import { Component, Input } from '@angular/core';
 })
 export class ResultComponent {
   @Input() searchText = ''
+  @Input() translations: Translation[] = []
+
+  get filtered() {
+    return this.translations
+      .filter(x => x.german.includes(this.searchText))
+  }
 }
