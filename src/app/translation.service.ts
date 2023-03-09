@@ -10,10 +10,7 @@ export class TranslationService {
 
   constructor(private readonly http: HttpClient) { }
 
-  loadTranslations(): Subscription {
+  loadTranslations(): Observable<string> {
     return this.http.get('assets/translations.txt', {responseType: 'text'})
-      .subscribe((data) => {
-        return data
-    })
   }
 }

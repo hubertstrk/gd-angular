@@ -20,6 +20,9 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    const result = this.translationService.loadTranslations()
+    this.translationService.loadTranslations().subscribe((text: string) => {
+      console.log(text)
+      this.translations.push({german: 'foo', english: 'bar'})
+    })
   }
 }
