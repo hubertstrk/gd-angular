@@ -1,0 +1,6 @@
+<form>
+  <mat-form-field>
+    <mat-label>Search something</mat-label>
+    <input #input matInput (keyup)="changed.emit(input.value)">
+  </mat-form-field>
+</form>
