@@ -6,12 +6,14 @@ import { SearchComponent } from './search/search.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { FormsModule } from '@angular/forms'
-import { MatInputModule } from '@angular/material/input'
+import { MatInputModule } from '@angular/material/input';
+import { ResultComponent } from './result/result.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
+    SearchComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
