@@ -1,2 +1,7 @@
-<app-search (changed)="onChanged($event)"></app-search>
-<app-result [searchText]="searchText" [translations]="translations"></app-result>
+<h1>{{ title }}</h1>
+<div class="component">
+  <app-search (changed)="onChanged($event)"></app-search>
+  <app-result
+    [searchText]="searchText"
+    [translations]="translations"></app-result>
+</div>

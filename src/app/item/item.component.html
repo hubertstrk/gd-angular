@@ -1,0 +1,10 @@
+<div class="component">
+  <div class="translation" *ngIf="match">
+    <span>{{ match.pre }}</span>
+    <span class="match">{{ match.match }}</span>
+    <span>{{ match.post }}</span>
+  </div>
+  <div class="translation">
+    {{ translation?.english }}
+  </div>
+</div>

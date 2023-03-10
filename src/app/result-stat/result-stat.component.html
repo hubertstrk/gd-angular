@@ -1,1 +1,5 @@
-<div>{{ length < 3 ? 'Enter at least 3 characters' : foundMessage }}</div>
+<div *ngIf="found <= 0">Enter at least 3 characters</div>
+<div *ngIf="found > 0">
+  Found <mat-chip>{{ found }}</mat-chip> results for
+  <span class="search-text">{{ searchText }}</span>
+</div>

@@ -1,0 +1,15 @@
+.component {
+  display: flex;
+  align-items: center;
+
+  .translation {
+    display: flex;
+    flex: 1;
+  }
+
+  .match {
+    color: red;
+  }
+
+  padding: 2px;
+}

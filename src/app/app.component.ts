@@ -1,27 +1,26 @@
-import { Component } from '@angular/core'
-import {Translation} from './models'
-import {TranslationService} from './translation.service'
+import { Component, OnInit } from '@angular/core'
+import { Translation } from './models'
+import { TranslationService } from './translation.service'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-
+export class AppComponent implements OnInit {
   constructor(private translationService: TranslationService) {}
 
   title = 'gd-angular'
-  searchText: string = ''
-  translations : Translation[] = []
+  searchText = ''
+  translations: Translation[] = []
 
   onChanged(text: string) {
     this.searchText = text
   }
 
-  readTranslations (text: string): Translation[] {
+  readTranslations(text: string): Translation[] {
     return text.split('\n').reduce((acc: Translation[], curr: string) => {
-      var parts = curr.split(';')
+      const parts = curr.split(';')
       acc.push({ german: parts[0], english: parts[1] })
       return acc
     }, [])
