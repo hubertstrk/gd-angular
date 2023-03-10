@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import  {Translation} from '../models'
+import { AfterViewInit, Component, Input } from '@angular/core';
+import { Translation } from '../models'
 
 @Component({
   selector: 'app-result',
@@ -10,8 +10,14 @@ export class ResultComponent {
   @Input() searchText = ''
   @Input() translations: Translation[] = []
 
+  displayedColumns: string[] = ['german', 'english'];
+
   get filtered() {
-    return this.translations
-      .filter(x => x.german.includes(this.searchText))
+    return this.searchText.length >= 2 ? this.translations
+      .filter(x => x.german.includes(this.searchText)) : []
+  }
+
+  get translationsFoundMessage(): string {
+    return `Found ${this.filtered.length} translations`
   }
 }
