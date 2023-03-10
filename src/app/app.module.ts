@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms'
 import { MatInputModule } from '@angular/material/input'
 import { ResultComponent } from './result/result.component';
 import { ResultStatComponent } from './result-stat/result-stat.component'
+import { MatTableModule } from '@angular/material/table'
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ResultStatComponent } from './result-stat/result-stat.component'
     FormsModule,
     MatInputModule,
     HttpClientModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
