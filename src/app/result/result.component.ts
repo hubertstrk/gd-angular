@@ -13,7 +13,9 @@ export class ResultComponent {
   displayedColumns: string[] = ['german', 'english']
 
   get filtered() {
-    return this.searchText.length >= 2 ? this.translations.filter((x) => x.german.includes(this.searchText)) : []
+    const foo = this.searchText.length >= 2 ? this.translations.filter((x) => x.german.includes(this.searchText)) : []
+    console.log(foo)
+    return foo
   }
 
   get translationsFoundMessage(): string {

@@ -1,6 +1,11 @@
 <form>
-  <mat-form-field class="component">
-    <mat-label>Search something</mat-label>
-    <input #input matInput (keyup)="changed.emit(input.value)" />
-  </mat-form-field>
+  <div class="flex flex-column gap-2">
+    <label htmlFor="search-input">Search</label>
+    <input
+      #input
+      pInputText
+      id="search-input"
+      aria-describedby="search-input-help"
+      (keyup)="changed.emit(input.value)" />
+  </div>
 </form>
