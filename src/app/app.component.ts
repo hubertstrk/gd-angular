@@ -13,15 +13,20 @@ export class AppComponent implements OnInit {
   title = 'gd-angular'
   searchText = ''
   translations: Translation[] = []
+  selectedLanguage = 'de'
 
-  onChanged(text: string) {
+  onSearchChanged(text: string) {
     this.searchText = text
+  }
+
+  onSettingsChanged(selectedLanguage: string) {
+    this.selectedLanguage = selectedLanguage
   }
 
   readTranslations(text: string): Translation[] {
     return text.split('\n').reduce((acc: Translation[], curr: string) => {
       const parts = curr.split(';')
-      acc.push({ german: parts[0], english: parts[1] })
+      if (parts.length === 2) acc.push({ de: parts[0], en: parts[1] })
       return acc
     }, [])
   }

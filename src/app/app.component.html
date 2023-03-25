@@ -1,7 +1,10 @@
-<h1>{{ title }}</h1>
+<h2>{{ title }}</h2>
 <div class="component">
-  <app-search (changed)="onChanged($event)"></app-search>
+  <app-search (changed)="onSearchChanged($event)"></app-search>
+  <app-settings (changed)="onSettingsChanged($event)"></app-settings>
+
   <app-result
     [searchText]="searchText"
-    [translations]="translations"></app-result>
+    [translations]="translations"
+    [selectedLanguage]="selectedLanguage"></app-result>
 </div>

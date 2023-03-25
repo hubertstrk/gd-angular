@@ -9,13 +9,19 @@ import { Translation } from '../models'
 export class ResultComponent {
   @Input() searchText = ''
   @Input() translations: Translation[] = []
+  @Input() selectedLanguage = 'de'
 
-  displayedColumns: string[] = ['german', 'english']
+  minCharacter = 2
+
+  get hasMinimumCharacters() {
+    return this.searchText.length > this.minCharacter
+  }
 
   get filtered() {
-    const foo = this.searchText.length >= 2 ? this.translations.filter((x) => x.german.includes(this.searchText)) : []
-    console.log(foo)
-    return foo
+    const key = this.selectedLanguage as keyof Translation
+    return this.hasMinimumCharacters
+      ? this.translations.filter((x) => x[key].toLowerCase().includes(this.searchText.toLowerCase()))
+      : []
   }
 
   get translationsFoundMessage(): string {

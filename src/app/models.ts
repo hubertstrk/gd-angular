@@ -1,4 +1,4 @@
 export interface Translation {
-    german: string
-    english: string
+  de: string
+  en: string
 }

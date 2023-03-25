@@ -9,16 +9,25 @@ import { Translation } from '../models'
 export class ItemComponent {
   @Input() searchText = ''
   @Input() translation: Translation | null = null
+  @Input() selectedLanguage = 'de'
 
-  get match() {
-    if (!this.translation) return null
-    const index = this.translation.german.indexOf(this.searchText)
+  get formatted() {
+    if (!this.translation || !this.selectedLanguage) return null
+
+    const primary = this.translation[this.selectedLanguage as keyof Translation].toLowerCase()
+
+    const index = primary.toLowerCase().indexOf(this.searchText.toLowerCase())
     if (index === -1) return null
 
-    const pre = this.translation.german.slice(0, index)
-    const match = this.translation.german.slice(index, index + this.searchText.length)
-    const post = this.translation.german.slice(index + this.searchText.length)
+    const pre = primary.toLowerCase().slice(0, index)
+    const match = primary.toLowerCase().slice(index, index + this.searchText.toLowerCase().length)
+    const post = primary.toLowerCase().slice(index + this.searchText.toLowerCase().length)
 
-    return { pre, match, post }
+    return {
+      pre,
+      match,
+      post,
+      value: this.selectedLanguage === 'de' ? this.translation?.de : this.translation?.en,
+    }
   }
 }

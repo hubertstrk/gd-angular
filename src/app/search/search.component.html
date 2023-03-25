@@ -3,7 +3,10 @@
     <label htmlFor="search-input">Search</label>
     <input
       #input
+      pAutoFocus
+      [autofocus]="true"
       pInputText
+      placeholder="Enter at least 3 characters"
       id="search-input"
       aria-describedby="search-input-help"
       (keyup)="changed.emit(input.value)" />
