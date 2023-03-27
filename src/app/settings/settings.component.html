@@ -1,21 +1,13 @@
 <div class="flex gap-3 my-3">
   <div class="flex align-items-center">
-    <p-radioButton
-      name="selectedLanguage"
-      value="de"
-      [(ngModel)]="selectedLanguage"
+    <p-selectButton
+      [options]="[
+        { label: 'German', value: 'de' },
+        { label: 'English', value: 'en' }
+      ]"
       (ngModelChange)="onChanged($event)"
-      inputId="german-option"></p-radioButton>
-    <label for="german-option" class="ml-2">German</label>
-  </div>
-
-  <div class="flex align-items-center">
-    <p-radioButton
-      name="selectedLanguage"
-      value="en"
       [(ngModel)]="selectedLanguage"
-      (ngModelChange)="onChanged($event)"
-      inputId="english-option"></p-radioButton>
-    <label for="english-option" class="ml-2">English</label>
+      optionLabel="label"
+      optionValue="value"></p-selectButton>
   </div>
 </div>

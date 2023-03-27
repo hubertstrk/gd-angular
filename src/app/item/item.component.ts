@@ -27,7 +27,7 @@ export class ItemComponent {
       pre,
       match,
       post,
-      value: this.selectedLanguage === 'de' ? this.translation?.de : this.translation?.en,
+      value: this.selectedLanguage === 'de' ? this.translation?.en : this.translation?.de,
     }
   }
 }

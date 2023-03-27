@@ -11,20 +11,21 @@ export class AppComponent implements OnInit {
   constructor(private translationService: TranslationService) {}
 
   title = 'gd-angular'
-  searchText = ''
+  text = ''
   translations: Translation[] = []
   selectedLanguage = 'de'
 
-  onSearchChanged(text: string) {
-    this.searchText = text
+  onTextChanged(text: string) {
+    this.text = text
   }
 
   onSettingsChanged(selectedLanguage: string) {
     this.selectedLanguage = selectedLanguage
+    this.text = ''
   }
 
-  readTranslations(text: string): Translation[] {
-    return text.split('\n').reduce((acc: Translation[], curr: string) => {
+  readTranslations(data: string): Translation[] {
+    return data.split('\n').reduce((acc: Translation[], curr: string) => {
       const parts = curr.split(';')
       if (parts.length === 2) acc.push({ de: parts[0], en: parts[1] })
       return acc
@@ -32,8 +33,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.translationService.loadTranslations().subscribe((text: string) => {
-      this.translations = this.readTranslations(text)
+    this.translationService.loadTranslations().subscribe((data: string) => {
+      this.translations = this.readTranslations(data)
     })
   }
 }

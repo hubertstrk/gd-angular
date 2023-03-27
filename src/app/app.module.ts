@@ -14,6 +14,7 @@ import { AutoFocusModule } from 'primeng/autofocus'
 import { ButtonModule } from 'primeng/button'
 import { InputTextModule } from 'primeng/inputtext'
 import { RadioButtonModule } from 'primeng/radiobutton'
+import { SelectButtonModule } from 'primeng/selectbutton'
 import { CardModule } from 'primeng/card'
 import { SettingsComponent } from './settings/settings.component'
 
@@ -29,6 +30,7 @@ import { SettingsComponent } from './settings/settings.component'
     RadioButtonModule,
     CardModule,
     InputTextModule,
+    SelectButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
