@@ -16,6 +16,8 @@ import { InputTextModule } from 'primeng/inputtext'
 import { RadioButtonModule } from 'primeng/radiobutton'
 import { SelectButtonModule } from 'primeng/selectbutton'
 import { CardModule } from 'primeng/card'
+import { PanelModule } from 'primeng/panel'
+
 import { SettingsComponent } from './settings/settings.component'
 
 @NgModule({
@@ -30,6 +32,7 @@ import { SettingsComponent } from './settings/settings.component'
     RadioButtonModule,
     CardModule,
     InputTextModule,
+    PanelModule,
     SelectButtonModule,
   ],
   providers: [],

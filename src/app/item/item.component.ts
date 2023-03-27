@@ -27,6 +27,7 @@ export class ItemComponent {
       pre,
       match,
       post,
+      primary,
       value: this.selectedLanguage === 'de' ? this.translation?.en : this.translation?.de,
     }
   }

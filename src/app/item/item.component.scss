@@ -1,6 +1,10 @@
 .component {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  border: 1px solid #ddd;
+  border-radius: 6px;
 
   .translation {
     display: flex;
@@ -8,8 +12,10 @@
   }
 
   .match {
-    color: red;
+    text-decoration: underline;
+    color: var(--highlight-text-color);
   }
 
-  padding: 2px;
+  padding: 6px;
+  margin-bottom: 6px;
 }
