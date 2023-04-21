@@ -1,9 +1,6 @@
 <div class="flex flex-column my-2">
-  <app-result-stat [found]="filtered.length" [searchText]="searchText" />
-  <app-item
-    *ngFor="let translation of filtered"
-    [searchText]="searchText"
-    [translation]="translation"
-    [selectedLanguage]="selectedLanguage">
-  </app-item>
+  <div *ngFor="let translation of translations" class="translation-result">
+    <div class="primary">{{ translation.primary }}</div>
+    <div class="subsidiary">{{ translation.subsidiary }}</div>
+  </div>
 </div>

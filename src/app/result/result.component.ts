@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { Translation } from '../models'
+import { DisplayTranslation } from '../models'
 
 @Component({
   selector: 'app-result',
@@ -7,24 +7,9 @@ import { Translation } from '../models'
   styleUrls: ['./result.component.scss'],
 })
 export class ResultComponent {
-  @Input() searchText = ''
-  @Input() translations: Translation[] = []
-  @Input() selectedLanguage = 'de'
+  @Input() translations: DisplayTranslation[] = []
 
-  minCharacter = 2
-
-  get hasMinimumCharacters() {
-    return this.searchText.length > this.minCharacter
-  }
-
-  get filtered() {
-    const key = this.selectedLanguage as keyof Translation
-    return this.hasMinimumCharacters
-      ? this.translations.filter((x) => x[key].toLowerCase().includes(this.searchText.toLowerCase()))
-      : []
-  }
-
-  get translationsFoundMessage(): string {
-    return `Found ${this.filtered.length} translations`
+  get sortedTranslations() {
+    return this.translations.sort((a, b) => a.primary.localeCompare(b.primary))
   }
 }

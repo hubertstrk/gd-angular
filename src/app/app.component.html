@@ -2,14 +2,11 @@
   <h2>{{ title }}</h2>
   <div class="component">
     <app-search
-      [text]="text"
+      [searchText]="searchText"
       (textChange)="onTextChanged($event)"
       ngDefaultControl></app-search>
-    <app-settings (changed)="onSettingsChanged($event)"></app-settings>
 
-    <app-result
-      [searchText]="text"
-      [translations]="translations"
-      [selectedLanguage]="selectedLanguage"></app-result>
+    <app-settings (changed)="onSettingsChanged($event)"></app-settings>
+    <app-result [translations]="found"></app-result>
   </div>
 </div>

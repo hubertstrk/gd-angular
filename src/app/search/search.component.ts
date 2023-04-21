@@ -6,11 +6,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent {
-  @Input() text = ''
+  @Input() searchText = ''
   @Output() textChange: EventEmitter<string> = new EventEmitter<string>()
 
   onValueChanged(text: string) {
-    this.text = text
+    this.searchText = text
     this.textChange.emit(text)
   }
 }

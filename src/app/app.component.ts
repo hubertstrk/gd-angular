@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Translation } from './models'
+import { Translation, DisplayTranslation } from './models'
 import { TranslationService } from './translation.service'
 
 @Component({
@@ -11,17 +11,24 @@ export class AppComponent implements OnInit {
   constructor(private translationService: TranslationService) {}
 
   title = 'gd-angular'
-  text = ''
+  searchText = ''
   translations: Translation[] = []
   selectedLanguage = 'de'
+  minCharacter = 2
 
-  onTextChanged(text: string) {
-    this.text = text
+  ngOnInit(): void {
+    this.translationService.loadTranslations().subscribe((data: string) => {
+      this.translations = this.readTranslations(data)
+    })
+  }
+
+  onTextChanged(searchText: string) {
+    this.searchText = searchText
   }
 
   onSettingsChanged(selectedLanguage: string) {
     this.selectedLanguage = selectedLanguage
-    this.text = ''
+    this.searchText = ''
   }
 
   readTranslations(data: string): Translation[] {
@@ -32,9 +39,16 @@ export class AppComponent implements OnInit {
     }, [])
   }
 
-  ngOnInit(): void {
-    this.translationService.loadTranslations().subscribe((data: string) => {
-      this.translations = this.readTranslations(data)
-    })
+  get hasMinimumCharacters() {
+    return this.searchText.length > this.minCharacter
+  }
+
+  get found(): DisplayTranslation[] {
+    const key = this.selectedLanguage as keyof Translation
+    const found = this.hasMinimumCharacters
+      ? this.translations.filter((x) => x[key].toLowerCase().includes(this.searchText.toLowerCase()))
+      : []
+
+    return found.map((x) => ({ primary: x[key], subsidiary: x[key === 'de' ? 'en' : 'de'] }))
   }
 }
