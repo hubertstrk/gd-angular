@@ -1,12 +1,4 @@
-<div class="main-component">
-  <h2>{{ title }}</h2>
-  <div class="component">
-    <app-search
-      [searchText]="searchText"
-      (textChange)="onTextChanged($event)"
-      ngDefaultControl></app-search>
-
-    <app-settings (changed)="onSettingsChanged($event)"></app-settings>
-    <app-result [translations]="found"></app-result>
-  </div>
+<p-menubar [model]="items"> </p-menubar>
+<div class="page-content">
+  <router-outlet></router-outlet>
 </div>
