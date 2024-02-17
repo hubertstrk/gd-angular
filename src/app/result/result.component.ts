@@ -8,6 +8,7 @@ import { DisplayTranslation } from '../models'
 })
 export class ResultComponent {
   @Input() translations: DisplayTranslation[] = []
+  @Input() language = 'de'
 
   get sortedTranslations() {
     return this.translations.sort((a, b) => a.primary.localeCompare(b.primary))

@@ -13,9 +13,7 @@ import { ButtonModule } from 'primeng/button'
 import { InputTextModule } from 'primeng/inputtext'
 import { RadioButtonModule } from 'primeng/radiobutton'
 import { SelectButtonModule } from 'primeng/selectbutton'
-import { CardModule } from 'primeng/card'
-import { PanelModule } from 'primeng/panel'
-import { MenubarModule } from 'primeng/menubar'
+import { TableModule } from 'primeng/table'
 
 import { SettingsComponent } from './settings/settings.component'
 import { AppRoutingModule } from './app-routing.module'
@@ -31,13 +29,11 @@ import { AboutComponent } from './about/about.component'
     FormsModule,
     HttpClientModule,
     ButtonModule,
+    TableModule,
     RadioButtonModule,
-    CardModule,
     InputTextModule,
-    PanelModule,
     SelectButtonModule,
     AppRoutingModule,
-    MenubarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

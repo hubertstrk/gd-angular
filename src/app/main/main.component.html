@@ -5,5 +5,5 @@
     ngDefaultControl></app-search>
 
   <app-settings (changed)="onSettingsChanged($event)"></app-settings>
-  <app-result [translations]="found"></app-result>
+  <app-result [translations]="found" [language]="selectedLanguage"></app-result>
 </div>

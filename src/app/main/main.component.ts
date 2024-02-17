@@ -43,11 +43,20 @@ export class MainComponent implements OnInit {
   }
 
   get found(): DisplayTranslation[] {
-    const key = this.selectedLanguage as keyof Translation
-    const found = this.hasMinimumCharacters
-      ? this.translations.filter((x) => x[key].toLowerCase().includes(this.searchText.toLowerCase()))
-      : []
+    const key = <keyof Translation>this.selectedLanguage
+    const found = this.translations.reduce((acc: DisplayTranslation[], curr: Translation) => {
+      if (this.hasMinimumCharacters && curr[key].toLowerCase().includes(this.searchText.toLowerCase())) {
+        const index = curr[key].toLowerCase().indexOf(this.searchText.toLowerCase())
+        const a = curr[key].slice(0, index)
+        const b = curr[key].slice(index, index + this.searchText.length)
+        const c = curr[key].slice(index + this.searchText.length)
 
-    return found.map((x) => ({ primary: x[key], subsidiary: x[key === 'de' ? 'en' : 'de'] }))
+        acc.push({ index, a, b, c, primary: curr[key], subsidiary: curr[key === 'de' ? 'en' : 'de'] })
+      }
+
+      return acc
+    }, [])
+
+    return found.filter((x) => x.index === 0).concat(found.filter((x) => x.index > 0))
   }
 }
